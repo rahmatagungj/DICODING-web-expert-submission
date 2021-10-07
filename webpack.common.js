@@ -5,7 +5,6 @@ const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default
 const ImageminMozjpeg = require('imagemin-mozjpeg')
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/scripts/index.js'),
@@ -78,7 +77,6 @@ module.exports = {
           progressive: true
         })
       ]
-    }),
-    new BundleAnalyzerPlugin()
+    })
   ]
 }
