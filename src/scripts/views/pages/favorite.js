@@ -14,12 +14,13 @@ const Favorite = {
   },
 
   async onMounted () {
-    const skipToContent = document.getElementById('skipToContent')
-    const mainContent = document.getElementById('mainContent')
-    skipToContent.addEventListener('click', () => {
-      mainContent.scrollIntoView({ behavior: 'smooth' })
-      mainContent.focus()
-    })
+    // REMOVED BECAUSE JUST USING A TAG
+    // const skipToContent = document.getElementById('skipToContent')
+    // const mainContent = document.getElementById('mainContent')
+    // skipToContent.addEventListener('click', () => {
+    //   mainContent.scrollIntoView({ behavior: 'smooth' })
+    //   mainContent.focus()
+    // })
     const loader = document.getElementById('loading')
     loader.style.display = 'none'
   },

@@ -18,6 +18,7 @@ const app = new App({
 })
 
 window.addEventListener('hashchange', () => {
+  document.querySelector('#content').scrollIntoView()
   app.renderPage()
 })
 
