@@ -23,7 +23,7 @@ describe('Favorite Restaurant', () => {
     expect(document.querySelector('[aria-label="make as favorite"]')).toBeTruthy()
   })
 
-  it('should not show the unfavorite button when the restaurant has not been unfavorited before', async () => {
+  it('should not show the unfavorite button when the restaurant has not been favorited before', async () => {
     await FavoriteButtonInitiator.init({
       favoriteButtonContainer: document.querySelector('#favoriteButtonContainer'),
       restaurant: {
@@ -31,9 +31,10 @@ describe('Favorite Restaurant', () => {
       }
     })
 
-    expect(document.querySelector('[aria-label="make as unfavorited"]')).toBeFalsy()
+    expect(document.querySelector('[aria-label="make as unfavorite"]')).toBeFalsy()
   })
 
+  // USER CAN MAKE RESTAURANT AS FAVORITE
   it('should be able to make restaurant as favorite', async () => {
     await FavoriteButtonInitiator.init({
       favoriteButtonContainer: document.querySelector('#favoriteButtonContainer'),
@@ -44,13 +45,13 @@ describe('Favorite Restaurant', () => {
 
     document.querySelector('#favButton').dispatchEvent(new Event('click'))
     const restaurant = await FavoriteRestaurant.getRestaurant(1)
-
     expect(restaurant).toEqual({ id: 1 })
 
     FavoriteRestaurant.deleteRestaurant(1)
   })
 
-  it('should not add a restaurant again when its already favorited', async () => {
+  // USER CAN MAKE RESTAURANT AS UNFAVORITE
+  it('should be able to make restaurant as unfavorite', async () => {
     await FavoriteButtonInitiator.init({
       favoriteButtonContainer: document.querySelector('#favoriteButtonContainer'),
       restaurant: {
@@ -58,14 +59,16 @@ describe('Favorite Restaurant', () => {
       }
     })
 
-    // Tambahkan film dengan ID 1 ke daftar film yang disukai
-    await FavoriteRestaurant.putRestaurant({ id: 1 })
-    // Simulasikan pengguna menekan tombol suka film
     document.querySelector('#favButton').dispatchEvent(new Event('click'))
-    // tidak ada film yang ganda
-    expect(await FavoriteRestaurant.getAllRestaurant()).toEqual([{ id: 1 }])
+    const favoritedRestaurant = await FavoriteRestaurant.getRestaurant(1)
+    expect(favoritedRestaurant).toEqual({ id: 1 })
 
     FavoriteRestaurant.deleteRestaurant(1)
+    const willBeUnfavoritedRestaurant = await FavoriteRestaurant.getAllRestaurant()
+    expect(document.querySelector('[aria-label="make as unfavorite"]')).toBeTruthy()
+
+    document.querySelector('#favButton').dispatchEvent(new Event('click'))
+    expect(willBeUnfavoritedRestaurant).toEqual([])
   })
 
   it('should not add a restaurant when it has no id', async () => {
@@ -75,7 +78,6 @@ describe('Favorite Restaurant', () => {
     })
 
     document.querySelector('#favButton').dispatchEvent(new Event('click'))
-
     expect(await FavoriteRestaurant.getAllRestaurant()).toEqual([])
   })
 })
