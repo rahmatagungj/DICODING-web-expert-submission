@@ -1,0 +1,472 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-size: 18px;
+  font-family: "Inter", sans-serif;
+  background-color: #f3f3f3;
+  overflow-x: hidden;
+}
+
+main {
+  min-height: 85vh;
+}
+
+.container {
+  @media(min-width: 1080px) {
+    width: 80%;
+  }
+  margin: 0 auto;
+}
+
+header {
+  background-color: #172774;
+  position: relative;
+
+  .header-flex {
+    color: #222222;
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    justify-content: space-between;
+  }
+
+  a {
+    text-decoration: none;
+    padding: 10px 0;
+
+    h1 {
+      color: #fafafa;
+      text-transform: uppercase;
+      font-size: 27px;
+      font-weight: 600;
+
+      &:hover {
+        color: #9b9b9b;
+      }
+    }
+
+  }
+
+  .mobile-bar {
+    border-radius: 0.5em;
+    border: 0;
+    background: transparent;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2em 1.2em;
+    display: none;
+    @media(max-width: 768px) {
+      display: flex;
+    }
+
+    span {
+      display: block;;
+      height: 2px;
+      width: 20px;
+      margin: 2px;
+      background: #e0e0e0;
+    }
+
+    &.active {
+      background: #333;
+
+      span {
+        background: white;
+      }
+    }
+
+    &:hover {
+      background: #e1e1e1;
+      cursor: pointer;
+
+      span {
+        background: #444;
+      }
+
+      &.active {
+        background: #222;
+
+        span {
+          background: white;
+        }
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    @media(max-width: 768px) {
+      transition: ease 1s all;
+      opacity: 0;
+      max-height: 0px;
+      overflow: hidden;
+      display: flex;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      flex-direction: column;
+      background-color: #f1f1f1;
+      margin-left: -100%;
+      &.active {
+        opacity: 1;
+        max-height: 500px;
+        right: 0;
+        margin-left: 0%;
+        background-color: #e1e1e1;
+
+        li {
+          display: block;;
+
+          a {
+            display: block;;
+          }
+        }
+      }
+    }
+
+    li {
+      display: inline-block;
+      padding: 10px 0;
+      @media(max-width: 768px) {
+        background-color: #333333;
+      }
+
+      a {
+        display: inline-block;
+        color: #EEEEEE;
+        text-decoration: none;
+        padding: 1em 1em;
+        @media(max-width: 768px) {
+          color: white;
+        }
+
+        &:hover {
+          color: #b0b0b0;
+        }
+      }
+    }
+  }
+}
+
+.jumbotron {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  width: 100%;
+  height: 350px;
+  z-index: -2;
+  @media screen and (max-width: 768px) {
+    height: 100%;
+  }
+  overflow: hidden;
+  position: relative;
+  img {
+    width: 100%;
+    position: relative;
+  }
+  h2 {
+    text-shadow: #222222;
+    color: white;
+    margin: 0 auto;
+    font-size: 35px;
+    @media screen and (max-width: 768px) {
+      font-size: 20px;
+    }
+    text-transform: uppercase;
+    position: absolute;
+    margin: auto;
+  }
+}
+
+.list-restaurant {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media(max-width: 768px) {
+    margin: 0 30px;
+  }
+
+  h3 {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 3rem;
+  }
+
+  .items {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    @media screen and (min-width: 768px) {
+      margin: 50px 10px;
+    }
+    flex-direction: row;
+    flex-wrap: wrap;
+    @media(max-width: 768px) {
+      margin: 50px 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.card {
+  border-radius: 0.5em;
+  @media screen and (min-width: 768px) {
+    max-width: 320px;
+  }
+  background-color: white;
+  position: relative;
+  margin: 20px;
+
+  .city {
+    position: absolute;
+    background-color: #FF0075;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 0px 0.5em 0.5em 0px;
+    top: 10px;
+    color: white;
+  }
+
+  .featured-image {
+    border-radius: 0.5em 0.5em 0.2em 0.2em;
+    width: 100%;
+    height: auto;
+  }
+
+  .content {
+    padding: 10px;
+
+    .rating {
+      font-size: 18px;
+      color: #444444;
+      margin: 10px 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: #222222;
+
+      h4 {
+        font-size: 20px;
+        padding: 15px 0;
+
+        &:hover {
+          cursor: pointer;
+          color: #757575;
+        }
+      }
+    }
+
+    .description {
+      margin: 10px 0;
+      font-size: 17px;
+      text-transform: capitalize;
+      text-align: justify-all;
+      line-height: 1.5rem;
+      color: #333333;
+    }
+  }
+}
+
+footer {
+  background-color: #fafafa;
+  padding: 50px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.relative-menu {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.main-menu {
+  display: flex;
+  align-items: center;
+  background-color: #fafafa;
+  position: absolute;
+  top: -48px;
+  justify-content: space-evenly;
+  width: 50%;
+  @media screen and (max-width: 1080px) {
+    width: 95%;
+  }
+  height: 100px;
+
+  .menu {
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-icon {
+    width: 50px;
+    margin-bottom: 5px;
+  }
+}
+
+
+.detail-restaurant {
+  position: relative;
+  margin: 50px auto;
+  @media(max-width: 768px) {
+    margin: 50px 30px;
+  }
+  button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+  }
+}
+
+.frame {
+  background: #fafafa;
+  border-radius: 0.5em;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  &.reviewed {
+    flex-direction: column;
+    padding: 20px;
+    @media screen and (min-width: 768px) {
+      margin-left: 20px;
+      margin-top: 15px;
+    }
+  }
+  .list-menu {
+    margin-left: 20px;
+    margin-top: 10px;
+    .menu-item {
+      font-size: 19px;
+    }
+  }
+  .featured-image {
+    max-width: 30%;
+  }
+  .details {
+    margin-left: 30px;
+    .rating {
+      align-items: center;
+      display: flex;
+      font-size: 18px;
+      color: #444444;
+      margin: 10px 0;
+    }
+
+    h4 {
+      font-size: 25px;
+      padding: 15px 0;
+    }
+
+    .description {
+      margin: 20px 0;
+      font-size: 19px;
+      text-transform: capitalize;
+      text-align: justify-all;
+      line-height: 1.5rem;
+      color: #333333;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    margin: 10px 0;
+    .featured-image {
+      max-width: 100%;
+    }
+    .details {
+      margin: 30px 0;
+    }
+  }
+}
+
+.all-menus-title {
+  font-size: 30px;
+  margin: 35px 0;
+}
+
+.menus {
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.splash-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px auto;
+  font-size: 25px;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.review {
+  margin: 5px 0 30px 0;
+  .user-name {
+    margin-bottom: 16px 0;
+  }
+  .date {
+    font-size: 15px;
+    margin: 5px 0 10px 0;
+  }
+}
+.favorit-icon {
+  width: 50px;
+}
+
+#favButton {
+  width: 50px;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+.skip-to-content-link {
+  background: #e77e23;
+  height: 60px;
+  left: 50%;
+  position: absolute;
+  transform: translateY(-100%);
+  transition: transform 0.3s;
+  z-index: 100;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  border-radius: 0.5em;
+  border: none;
+  padding: 13px;
+  &:focus {
+    transform: translateY(10%);
+  }
+}
